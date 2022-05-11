@@ -1,0 +1,36 @@
+services:
+  nuxt:
+    build:
+      context: ./nuxt
+      target: dev
+    tty: true
+    command: /bin/sh -c "yarn && yarn dev"
+    env_file:
+      - ./nuxt/.env.development
+    volumes:
+      - ./nuxt:/app
+    ports:
+      - 3000:3000
+      - 24678:24678
+
+  go:
+    build:
+      context: ./go
+      target: base
+    tty: true
+    env_file:
+      - ./database/.env.development
+      - ./go/.env.development
+    volumes:
+      - ./go:/app
+    ports:
+      - 8080:8080
+
+  db:
+    image: mysql:8.0-oracle
+    env_file: ./database/.env.development
+    # volumes:
+    #   - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    #   - ./database/data.sql:/docker-entrypoint-initdb.d/data.sql
+    ports:
+      - 3306:3306

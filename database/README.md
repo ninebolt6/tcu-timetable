@@ -1,0 +1,1 @@
+NOTE: DBクライアントによってはallowPublicKeyRetrievalを有効にしないといけないかも
