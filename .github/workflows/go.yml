@@ -6,8 +6,8 @@ on:
       - opened
       - synchronize
       - reopened
-#     paths:
-#       - "go/*"
+    paths:
+      - "go/*"
 
 jobs:
 
