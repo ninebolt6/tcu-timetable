@@ -65,6 +65,3 @@ jobs:
     steps:
     - name: Lint
       uses: golangci/golangci-lint-action@v3
-      run: |
-        pwd
-        ls -l
