@@ -49,6 +49,9 @@ jobs:
         working-directory: go
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Test
       run: |
         pwd
@@ -63,5 +66,8 @@ jobs:
         working-directory: go
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Lint
       uses: golangci/golangci-lint-action@v3
