@@ -1,10 +1,10 @@
-# シラバス
+# 時間割システム
 
 ## リポジトリの準備
 ```bash
 # リポジトリのクローン
-git clone https://github.com/ninebolt6/syllabus.git
-cd syllabus
+git clone https://github.com/ninebolt6/tcu-timetable.git
+cd tcu-timetable
 
 # 新規ブランチを生やす
 git checkout -b ブランチ名
@@ -17,7 +17,6 @@ git branch ブランチ名
 - issueにはできる限りラベルをつける。
 - ブランチの命名規則を守る。新機能は`feature/XXX`、バグ修正は`hotfix/XXX`。
 - コミットメッセージの頭には`feat: XXX`のように接頭辞をつける。詳細は`.gitmessage`を参照されたし。
-- コンフリクト防止のため、ファイル全体をステージすることはせずに、極力変更箇所のみをステージする。
 - プルリクエストにもコミットメッセージと同様に接頭辞をつける。
 - プルリクエストは必ずメンバーにレビューしてもらってからマージする。
 
