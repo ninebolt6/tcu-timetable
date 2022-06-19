@@ -1,0 +1,46 @@
+name: Nuxt
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - "nuxt/**"
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nuxt
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'yarn'
+        cache-dependency-path: 'nuxt/yarn.lock'
+
+    - name: Cache node_modules
+      uses: actions/cache@v3
+      id: node-modules-cache-id
+      with:
+        path: nuxt/node_modules
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('nuxt/yarn.lock') }}
+
+    - name: Install
+      if: ${{ steps.node-modules-cache-id.outputs.cache-hit != 'true' }}
+      run: yarn install --non-interactive --frozen-lockfile
+
+    - name: Type Check
+      run: yarn typecheck
+
+    - name: Lint
+      run: yarn lint
