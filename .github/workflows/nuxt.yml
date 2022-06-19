@@ -41,3 +41,6 @@ jobs:
 
     - name: Type Check
       run: yarn typecheck
+
+    - name: Lint
+      run: yarn lint
