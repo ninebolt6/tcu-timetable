@@ -3,6 +3,7 @@
   "scripts": {
     "build": "nuxi build",
     "dev": "nuxi dev",
+    "typecheck": "nuxi typecheck",
     "generate": "nuxt generate",
     "preview": "nuxi preview"
   },

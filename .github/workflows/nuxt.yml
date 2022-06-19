@@ -1,0 +1,43 @@
+name: Nuxt
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - "nuxt/**"
+
+jobs:
+
+  setup:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nuxt
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'yarn'
+        cache-dependency-path: 'nuxt/yarn.lock'
+
+  typecheck:
+    runs-on: ubuntu-latest
+    needs: setup
+    defaults:
+      run:
+        working-directory: nuxt
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Type Check
+      run: yarn typecheck
