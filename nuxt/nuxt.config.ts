@@ -4,4 +4,7 @@ import { defineNuxtConfig } from 'nuxt'
 export default defineNuxtConfig({
   target: 'static',
   ssr: false,
+  typescript: {
+    strict: true,
+  },
 })
