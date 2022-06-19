@@ -17,13 +17,16 @@ module.exports = {
   },
   plugins: ["vue", "@typescript-eslint"],
   rules: {
-    indent: ["error", 2],
     "linebreak-style": ["error", "unix"],
-    quotes: ["error", "double"],
-    semi: ["error", "never"],
     "@typescript-eslint/no-unused-vars": [
       "warn",
       { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        semi: false,
+      },
     ],
   },
 }
