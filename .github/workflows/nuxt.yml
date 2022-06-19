@@ -28,6 +28,9 @@ jobs:
         cache: 'yarn'
         cache-dependency-path: 'nuxt/yarn.lock'
 
+    - name: Install
+      run: yarn install
+
   typecheck:
     runs-on: ubuntu-latest
     needs: setup
