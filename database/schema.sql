@@ -5,8 +5,6 @@ CREATE TABLE `Lectures` (
   `name` varchar(96) NOT NULL COMMENT '講義名',
   `place_id` int DEFAULT NULL COMMENT '教室',
   PRIMARY KEY (`id`),
-  KEY `Lectures_FK` (`place_id`),
-  CONSTRAINT `Lectures_FK` FOREIGN KEY (`place_id`) REFERENCES `Classrooms` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='講義情報';
 
 
@@ -30,8 +28,4 @@ CREATE TABLE `Timetables` (
   `period` int NOT NULL COMMENT '開講時限',
   `memo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'メモ',
   PRIMARY KEY (`id`),
-  KEY `Timetables_FK` (`lecture_id`),
-  KEY `Timetables_FK_1` (`classroom_id`),
-  CONSTRAINT `Timetables_FK` FOREIGN KEY (`lecture_id`) REFERENCES `Lectures` (`id`),
-  CONSTRAINT `Timetables_FK_1` FOREIGN KEY (`classroom_id`) REFERENCES `Classrooms` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='時間割情報';
