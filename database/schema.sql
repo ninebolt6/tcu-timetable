@@ -19,3 +19,14 @@ CREATE TABLE `Timetables` (
   `memo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'メモ',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='時間割情報';
+
+
+-- syllabus.timetable_lecture definition
+
+CREATE TABLE `timetable_lecture` (
+  `timetable_id` int NOT NULL COMMENT '時間割ID',
+  `lecture_id` int NOT NULL COMMENT '講義ID',
+  `classroom` varchar(64) DEFAULT NULL COMMENT '教室',
+  `day_of_week` varchar(4) NOT NULL COMMENT '開講曜日',
+  `period` int NOT NULL COMMENT '開講時限'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='時間割と講義を紐づける中間テーブル';
