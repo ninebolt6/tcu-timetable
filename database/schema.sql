@@ -1,6 +1,6 @@
--- syllabus.Lectures definition
+-- syllabus.lectures definition
 
-CREATE TABLE `Lectures` (
+CREATE TABLE `lectures` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '講義ID',
   `name` varchar(96) NOT NULL COMMENT '講義名',
   `teacher` varchar(32) DEFAULT NULL COMMENT '教員名',
@@ -8,9 +8,9 @@ CREATE TABLE `Lectures` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='講義情報';
 
 
--- syllabus.Timetables definition
+-- syllabus.timetables definition
 
-CREATE TABLE `Timetables` (
+CREATE TABLE `timetables` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '時間割ID',
   `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '時間割名',
   `memo` varchar(100) DEFAULT NULL COMMENT 'メモ',
