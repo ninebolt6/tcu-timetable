@@ -19,7 +19,7 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// ルーティング
-	CreateRoutes(e)
+	createRoutes(e)
 
 	// DBと接続
 	user := os.Getenv("MYSQL_USER")
@@ -39,6 +39,11 @@ func main() {
 	e.Logger.Fatal(e.Start(":8080"))
 }
 
-func CreateRoutes(e *echo.Echo) {
-	e.GET("/", controllers.Hello)
+func createRoutes(e *echo.Echo) {
+	api := e.Group("/api")
+
+	api.GET("/timetables", controllers.GetAllTimetables)
+
+	api.GET("/timetables/:id", controllers.GetOneTimetable)
+	api.GET("/timetables/:id/data", controllers.GetTimetableData)
 }
