@@ -19,7 +19,7 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// ルーティング
-	CreateRoutes(e)
+	createRoutes(e)
 
 	// DBと接続
 	user := os.Getenv("MYSQL_USER")
@@ -31,14 +31,19 @@ func main() {
 	if err != nil {
 		e.Logger.Fatal(err)
 	}
-	// NOTE: PlanetScaleの無料枠の最大コネクションは1000
-	pool.SetMaxOpenConns(500)
-	pool.SetMaxIdleConns(500)
+
+	pool.SetMaxOpenConns(10)
+	pool.SetMaxIdleConns(10)
 
 	// 起動
 	e.Logger.Fatal(e.Start(":8080"))
 }
 
-func CreateRoutes(e *echo.Echo) {
-	e.GET("/", controllers.Hello)
+func createRoutes(e *echo.Echo) {
+	api := e.Group("/api")
+
+	api.GET("/timetables", controllers.GetAllTimetables)
+
+	api.GET("/timetables/:id", controllers.GetOneTimetable)
+	api.GET("/timetables/:id/data", controllers.GetTimetableData)
 }
